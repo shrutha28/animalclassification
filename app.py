@@ -88,21 +88,21 @@ def upload_image():
         response = urllib.request.urlopen(req)
 
         result = response.read()
+        d1=json.loads(result)
+        d2='Animal is  : ' +str(d1['Results']['WebServiceOutput0'][0]['Scored Labels'])
+        #print(d2)
+        #print(type(d1))
 
 
 
 
 
 
-        flash(result)
+        flash(d2)
         return render_template('index.html',filename=s)
 
 
 
 
-@app.route('/display/<filename>')
-def display_image(filename):
-    # print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
 
